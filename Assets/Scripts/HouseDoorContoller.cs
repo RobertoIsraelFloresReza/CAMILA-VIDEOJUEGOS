@@ -1,6 +1,7 @@
+using DefaultNamespace;
 using UnityEngine;
 
-public class HouseDoorContoller : MonoBehaviour
+public class HouseDoorContoller : MonoBehaviour, IInteractable
 {
 // ... (Variables de Transform, Angulo, Duration)
     [SerializeField] private Transform houseDoor;
@@ -36,7 +37,7 @@ public class HouseDoorContoller : MonoBehaviour
     }
 
     // NUEVA LÓGICA: El jugador hace clic en la puerta
-    private void OnMouseDown()
+    public void Interact()
     {
         if (keyIsAvailable && !isOpening)
         {

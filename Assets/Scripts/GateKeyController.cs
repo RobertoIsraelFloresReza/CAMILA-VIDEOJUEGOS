@@ -1,15 +1,18 @@
+using DefaultNamespace;
 using UnityEngine;
 
-public class GateKeyController : MonoBehaviour
+public class GateKeyController : MonoBehaviour, IInteractable
 {
+    [Header("Identificación de la Llave")]
+    public string keyID;
     [Header("Evento Asociado")]
     public GlobalEvents keyOpensEvent;
     
     [SerializeField] private Transform keyModel;
      public string interactionTag = "Player";
     
-    private void OnMouseDown()
-    {// Notifica el evento específico (ej: Gate1On)
+    public void Interact()
+    {
         EventManager.Invoke(keyOpensEvent); 
         
         // Desaparece la llave

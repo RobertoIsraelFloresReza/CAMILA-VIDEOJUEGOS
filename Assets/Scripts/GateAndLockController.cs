@@ -1,6 +1,7 @@
+using DefaultNamespace;
 using UnityEngine;
 
-public class GateAndLockController : MonoBehaviour
+public class GateAndLockController : MonoBehaviour, IInteractable
 {
     [Header("Referencias de Puertas")]
     public GameObject leftDoor;  
@@ -36,7 +37,7 @@ public class GateAndLockController : MonoBehaviour
         Debug.Log("Llave recogida. Candado listo para ser abierto.");
     }
 
-    private void OnMouseDown()
+    public void Interact()
     {
         if (keyUsed && !isOpening)
         {
