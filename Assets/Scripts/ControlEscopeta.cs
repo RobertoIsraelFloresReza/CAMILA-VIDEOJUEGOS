@@ -18,6 +18,8 @@ public class ControlEscopeta : MonoBehaviour
     
     public string weaponItemID = "Escopeta";
     
+    public float shotgunDamage = 5000f;
+    
     [Header("Retroceso de la Vista")]
     private CmeraRecoil cameraRecoilScript;
 
@@ -105,12 +107,25 @@ public class ControlEscopeta : MonoBehaviour
     
     void Shoot()
     {
-        // ANTES: if (Time.time < nextFireTime) return; <-- ¡QUITAR ESTO!
-
         currentAmmo--;
-        // ANTES: nextFireTime = Time.time + fireRate; <-- ¡QUITAR ESTO!
     
-        Debug.Log("¡BANG! Quedan " + currentAmmo + " balas.");
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, shootDistance))
+        {
+            // 1. Verificar si el objetivo tiene un componente de salud
+            SistemaDeVida targetHealth = hit.collider.GetComponent<SistemaDeVida>();
+
+            if (targetHealth != null)
+            {
+                // 2. Aplicar daño al objetivo
+                targetHealth.TakeDamage(shotgunDamage);
+
+                // Opcional: Spawn de partículas de impacto (si tienes hitParticles configurado)
+                if (hitParticles != null)
+                {
+                    Instantiate(hitParticles, hit.point, Quaternion.LookRotation(hit.normal));
+                }
+            }
+        }
         shootSound.Play();
 
         StartCoroutine(DoRecoil());
@@ -210,4 +225,6 @@ void Update()
         isReloading = false;
         Debug.Log("¡Recarga completa! Munición: " + currentAmmo + "/" + maxAmmo);
     }
+    
+    
 }

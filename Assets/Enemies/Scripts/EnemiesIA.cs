@@ -7,6 +7,8 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     [Header("Componentes")]
     public NavMeshAgent agent;
     public Animator animator;
+    
+    public SistemaDeVida healthController;
 
     [Header("Sensores")]
     public Transform player;
@@ -25,10 +27,17 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
 
+        if (healthController == null) healthController = GetComponent<SistemaDeVida>();
+        if (healthController != null)
+        {
+            // Suscribirse al evento de muerte
+            healthController.OnDeath.AddListener(HandleDeath);
+        }
+        
         // Inicializamos animaciones
         RandomizeIdle();
 
-        // Iniciamos la m·quina de estados
+        // Iniciamos la mÔøΩquina de estados
         ChangeState(new PatrollingState(this));
 
         while (true)
@@ -53,6 +62,21 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
             }
             yield return new WaitForSeconds(0.2f);
         }
+    }
+    
+    private void HandleDeath()
+    {
+        // Bloqueamos la IA
+        agent.isStopped = true;
+        
+        // Opcional: Reproducir animaci√≥n de muerte (si tienes una)
+        // animator.SetTrigger("Die"); 
+        
+        // Asegurarse de que el objeto sea destruido o desactivado (ya lo maneja HealthController.Die, pero bueno reforzar)
+        Destroy(gameObject, 2f); // Destruir despu√©s de 2 segundos
+        
+        // Quitamos la referencia de escucha
+        healthController.OnDeath.RemoveListener(HandleDeath);
     }
 
     void Update()
@@ -98,6 +122,8 @@ public struct PatrollingState : IState
     public EnemiesIA StateMachine { get; private set; }
     private int wpindex;
     private float threshold;
+    
+    
 
     // Variables de espera
     private bool isWaiting;
@@ -171,7 +197,7 @@ public struct PatrollingState : IState
 
         StateMachine.agent.isStopped = true; // Frenamos
         StateMachine.agent.velocity = Vector3.zero;
-        StateMachine.SetWalking(false);      // AnimaciÛn Idle
+        StateMachine.SetWalking(false);      // AnimaciÔøΩn Idle
         StateMachine.RandomizeIdle();
     }
 
@@ -189,7 +215,7 @@ public struct PatrollingState : IState
     }
 }
 
-// ESTADO: PERSECUCI”N
+// ESTADO: PERSECUCIÔøΩN
 public struct ChasingState : IState
 {
     public EnemiesIA StateMachine { get; private set; }
@@ -224,6 +250,17 @@ public struct ChasingState : IState
             timerAttack += deltaTime;
             if (timerAttack >= 2.0f)
             {
+                SistemaDeVida playerHealth = StateMachine.player.GetComponent<SistemaDeVida>();
+                
+                if (playerHealth != null)
+                {
+                    // 2. Aplicamos da√±o (ajusta el valor del da√±o del enemigo)
+                    float enemyDamage = 50000f; 
+                    playerHealth.TakeDamage(enemyDamage);
+                
+                    // Si el jugador muere, el HealthController.OnDeath se disparar√°.
+                }
+                
                 StateMachine.RandomizeAttack();
                 StateMachine.TriggerAttack();
                 timerAttack = 0f;

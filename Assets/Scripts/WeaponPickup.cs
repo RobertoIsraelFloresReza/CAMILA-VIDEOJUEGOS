@@ -14,9 +14,16 @@ public class WeaponPickup : MonoBehaviour, IInteractable
     // Update is called once per frame
     public void Interact()
     {
-        var status = GlobalEvents.WeaponAdquired;
-        EventManager.Invoke(status); // notificaion de que el switch esta activo
-        GameManager.Instance.NotifyItemCollected(weaponItemID);
-        weaponModelVisual.gameObject.SetActive(false);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyItemCollected(weaponItemID);
+            Debug.Log($"[PICKUP] Arma '{weaponItemID}' notificada al GameManager.");
+        }
+        
+        // 2. Oculta el modelo visual del arma en el mundo.
+        if (weaponModelVisual != null)
+        {
+            weaponModelVisual.gameObject.SetActive(false);
+        }
     }
 }

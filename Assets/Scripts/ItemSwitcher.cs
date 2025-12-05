@@ -10,26 +10,13 @@ public class ItemSwitcher : MonoBehaviour
     private bool isWeaponAdquired = false;
     private int lastValidIndex = 0;
     
+    
     [Header("Configuración de Items")]
     public int shotgunItemIndex = 0;
-
-    void OnEnable()
-    {
-        // Suscribirse al evento
-        EventManager.Subscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
-    }
-
-    void OnDisable()
-    {
-        EventManager.Unsubscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
-    }
-
-    private void SetWeaponAdquired()
-    {
-        isWeaponAdquired = true;Debug.Log("--- ARMA ADQUIRIDA --- | isWeaponAdquired: " + isWeaponAdquired);
-        // Si adquirimos el arma, aseguramos que la lista se actualice para permitir su selección.
-    }
+    public string shotgunItemID = "Escopeta";
     
+    bool hasWeapon = false;
+
     void Start()
     {
         // Al empezar, nos aseguramos de que solo el primer item esté activo
@@ -39,6 +26,7 @@ public class ItemSwitcher : MonoBehaviour
 
     void Update()
     {
+        hasWeapon=GameManager.Instance != null && GameManager.Instance.HasItem("Escopeta");
         // Revisamos si hay un mouse conectado
         if (Mouse.current == null) return;
 
@@ -47,7 +35,7 @@ public class ItemSwitcher : MonoBehaviour
 
         int previousItemIndex = currentItemIndex;
 
-        if (scrollInput > 0f && isWeaponAdquired) // Rueda hacia arriba
+        if (scrollInput > 0f && hasWeapon) // Rueda hacia arriba
         {
             // Pasamos al item anterior
             currentItemIndex--;
@@ -57,7 +45,7 @@ public class ItemSwitcher : MonoBehaviour
                 currentItemIndex = items.Length - 1;
             }
         }
-        else if (scrollInput < 0f && isWeaponAdquired) // Rueda hacia abajo
+        else if (scrollInput < 0f && hasWeapon) // Rueda hacia abajo
         {
             // Pasamos al siguiente item
             currentItemIndex++;
@@ -85,9 +73,8 @@ public class ItemSwitcher : MonoBehaviour
     void SelectItem(int newIndex, int oldIndex)
     {
         int finalIndex = newIndex;
-        //Debug.Log($"[SELECT] Analizando índice {newIndex}. Arma adquirida: {isWeaponAdquired}.");
-        // Bloqueo: Si intenta ir al índice de la escopeta Y no la tiene
-        if (newIndex == shotgunItemIndex && !isWeaponAdquired)
+        
+        if (newIndex == shotgunItemIndex && !hasWeapon)
         {
          //   Debug.Log("!!! BLOQUEO ACTIVADO: Volviendo a índice " + oldIndex + ".");
             // Forzamos el índice a ser el anterior (la linterna o lo que estuviera antes)
