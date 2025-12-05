@@ -7,11 +7,34 @@ public class ItemSwitcher : MonoBehaviour
     public GameObject[] items;
 
     private int currentItemIndex = 0;
+    private bool isWeaponAdquired = false;
+    private int lastValidIndex = 0;
+    
+    [Header("Configuración de Items")]
+    public int shotgunItemIndex = 0;
 
+    void OnEnable()
+    {
+        // Suscribirse al evento
+        EventManager.Subscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Unsubscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
+    }
+
+    private void SetWeaponAdquired()
+    {
+        isWeaponAdquired = true;Debug.Log("--- ARMA ADQUIRIDA --- | isWeaponAdquired: " + isWeaponAdquired);
+        // Si adquirimos el arma, aseguramos que la lista se actualice para permitir su selección.
+    }
+    
     void Start()
     {
         // Al empezar, nos aseguramos de que solo el primer item esté activo
-        SelectItem(0);
+        SelectItem(0,0);
+        lastValidIndex = 0;
     }
 
     void Update()
@@ -24,7 +47,7 @@ public class ItemSwitcher : MonoBehaviour
 
         int previousItemIndex = currentItemIndex;
 
-        if (scrollInput > 0f) // Rueda hacia arriba
+        if (scrollInput > 0f && isWeaponAdquired) // Rueda hacia arriba
         {
             // Pasamos al item anterior
             currentItemIndex--;
@@ -34,7 +57,7 @@ public class ItemSwitcher : MonoBehaviour
                 currentItemIndex = items.Length - 1;
             }
         }
-        else if (scrollInput < 0f) // Rueda hacia abajo
+        else if (scrollInput < 0f && isWeaponAdquired) // Rueda hacia abajo
         {
             // Pasamos al siguiente item
             currentItemIndex++;
@@ -49,20 +72,35 @@ public class ItemSwitcher : MonoBehaviour
         // llamamos a nuestra función para actualizar el item.
         if (previousItemIndex != currentItemIndex)
         {
-            SelectItem(currentItemIndex);
+           // Debug.Log($"INTENTO DE CAMBIO: old={previousItemIndex}, new={currentItemIndex}.");
+            SelectItem(currentItemIndex, previousItemIndex);
+        }
+        else
+        {
+            SelectItem(currentItemIndex, currentItemIndex); 
         }
     }
 
     // Esta función activa un item y desactiva todos los demás
-    void SelectItem(int index)
+    void SelectItem(int newIndex, int oldIndex)
     {
-        // Recorremos todos los items en nuestra lista
+        int finalIndex = newIndex;
+        //Debug.Log($"[SELECT] Analizando índice {newIndex}. Arma adquirida: {isWeaponAdquired}.");
+        // Bloqueo: Si intenta ir al índice de la escopeta Y no la tiene
+        if (newIndex == shotgunItemIndex && !isWeaponAdquired)
+        {
+         //   Debug.Log("!!! BLOQUEO ACTIVADO: Volviendo a índice " + oldIndex + ".");
+            // Forzamos el índice a ser el anterior (la linterna o lo que estuviera antes)
+            finalIndex = oldIndex; 
+        }
+            currentItemIndex = newIndex; // Si es válido, confirmamos el nuevo índice.
+
+           // Debug.Log($"[SELECT] Índice final activo: {finalIndex}. currentItemIndex ahora es {currentItemIndex}.");
+        // Activación/Desactivación
         for (int i = 0; i < items.Length; i++)
         {
-            // Compara: ¿Es 'i' el 'index' que queremos activar?
-            // Si i == index, SetActive(true).
-            // Si i != index, SetActive(false).
-            items[i].SetActive(i == index);
+            // Solo activamos el item que coincide con el índice final
+            items[i].SetActive(i == finalIndex);
         }
     }
 }

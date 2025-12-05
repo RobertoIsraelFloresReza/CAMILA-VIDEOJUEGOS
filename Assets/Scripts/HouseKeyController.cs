@@ -4,13 +4,23 @@ using DefaultNamespace;
 
 public class HouseKeyController : MonoBehaviour, IInteractable
 {
+    [Header("Identificación de la Llave")]
+    public string keyID; 
+    
     [SerializeField] private Transform keyModel;
-    public string interactionTag = "Player";
     
     public void Interact()
     {
-        var status = GlobalEvents.HouseKeyOn;
-        EventManager.Invoke(status); // notificaion de que el switch esta activo
-        keyModel.gameObject.SetActive(false);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyItemCollected(keyID);
+        }
+        
+        Debug.Log($"Llave {keyID} recogida.");
+
+        if (keyModel != null)
+        {
+            keyModel.gameObject.SetActive(false);
+        }
     }
 }

@@ -6,8 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5e2317c217e72774f9d3f53f8a833a7c
+  - enabled: 1
+    path: Assets/Scenes/CabinMap.unity
+    guid: 7a08e0c64fa9fb44a827cf3d009ad6a5
+  - enabled: 1
+    path: Assets/Scenes/LakeMap.unity
+    guid: 6b2fba2e5abcad7448e1e2cedf67d5a5
+  - enabled: 1
+    path: Assets/Scenes/ChurchMap.unity
+    guid: edbcf7f476926cf4b9df092f996b005d
+  - enabled: 1
+    path: Assets/Scenes/NorthWestMap.unity
+    guid: fbb5ac229dbc91744b520472231a2527
+  - enabled: 1
+    path: Assets/Scenes/MountainMap.unity
+    guid: bbc40be0003abe446bc24733d4731c46
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
