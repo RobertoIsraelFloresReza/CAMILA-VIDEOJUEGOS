@@ -610,6 +610,14 @@ PrefabInstance:
       propertyPath: mouseSensitivity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7404228005373399016, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: 'items.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6018104400216672332}
+    - target: {fileID: 7404228005373399016, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: 'items.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5447581691344963650}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -660,6 +668,16 @@ Camera:
 --- !u!4 &4670903528950698744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2890958772278186491, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+  m_PrefabInstance: {fileID: 7551654408930018051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5447581691344963650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2546063223614901057, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+  m_PrefabInstance: {fileID: 7551654408930018051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6018104400216672332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4271743126771075919, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
   m_PrefabInstance: {fileID: 7551654408930018051}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7011415763549402118 stripped

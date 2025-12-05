@@ -8,4 +8,5 @@ public enum GlobalEvents
     Indoor2On,
     Indoor3On,
     ChestKeyOn,
+    WeaponAdquired,
 }

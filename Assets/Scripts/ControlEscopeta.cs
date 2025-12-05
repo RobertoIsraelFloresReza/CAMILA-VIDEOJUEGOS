@@ -16,6 +16,8 @@ public class ControlEscopeta : MonoBehaviour
 
     public AudioSource reloadSound;
     
+    public string weaponItemID = "Escopeta";
+    
     [Header("Retroceso de la Vista")]
     private CmeraRecoil cameraRecoilScript;
 
@@ -28,17 +30,76 @@ public class ControlEscopeta : MonoBehaviour
     public Light muzzleFlashLight;   // Arrastra aquí el componente Light del "muzzle flash"
     public float flashDuration = 0.05f; // Duración en segundos del flash
     public ParticleSystem hitParticles; // Partículas que aparecerán al impactar algo (opcional)
+    
+    void OnEnable()
+    {
+        EventManager.Subscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
+        originalRotation = transform.localRotation.eulerAngles;
+        Debug.Log($"[ON ENABLE] Activando arma. Rotación actual: {transform.localRotation.eulerAngles}");
+        if (isWeaponAdquired)
+        {
+            currentAmmo = maxAmmo;
+        }
+        
+        nextFireTime = Time.time;
+    }
 
+    void OnDisable()
+    {
+        EventManager.Unsubscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
+    }
+
+    private void SetWeaponAdquired()
+    {
+        isWeaponAdquired = true;
+        currentAmmo = maxAmmo; // Inicializamos la munición al recogerla
+        Debug.Log("ControlEscopeta: ¡Arma adquirida! Lista para usar.");
+    }
+    
+    private bool isWeaponAdquired = false;
     void Start()
     {
+        // Intenta obtener el estado al iniciar la escena
+        if (GameManager.Instance != null && GameManager.Instance.HasItem(weaponItemID))
+        {
+            isWeaponAdquired = true;
+            currentAmmo = maxAmmo;
+        }
+    
+        // Si aún no la tiene, se suscribe al evento para recibir la notificación
+        if (!isWeaponAdquired && GameManager.Instance != null)
+        {
+            GameManager.Instance.OnItemCollected += CheckWeaponAcquired;
+        }
+        
         if (playerCamera != null)
         {
             cameraRecoilScript = playerCamera.GetComponent<CmeraRecoil>();
-        
+    
             if (cameraRecoilScript == null)
             {
                 Debug.LogError("Error: No se encontró el componente CameraRecoil en la cámara. Asegúrate de que esté adjunto.");
             }
+        }
+    }
+    
+    void OnDestroy()
+    {
+        // Limpieza al destruir el objeto (importante)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnItemCollected -= CheckWeaponAcquired;
+        }
+    }
+    
+    private void CheckWeaponAcquired(string itemID)
+    {
+        if (itemID == weaponItemID)
+        {
+            isWeaponAdquired = true;
+            currentAmmo = maxAmmo;
+            Debug.Log("ControlEscopeta: ¡Arma adquirida vía Singleton!");
+            GameManager.Instance.OnItemCollected -= CheckWeaponAcquired; 
         }
     }
     
@@ -108,11 +169,14 @@ void Update()
         {
             return;
         }
+        
+       // Debug.Log($"[UPDATE] Ammo: {currentAmmo}/{maxAmmo}, nextFireTime: {nextFireTime:F2}, Time.time: {Time.time:F2}");
 
-
-        if (Mouse.current.rightButton.wasPressedThisFrame && Time.time >= nextFireTime)
+        if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime)
         {
-
+            Debug.Log("--- Disparo Autorizado por FireRate ---");
+            
+            Debug.Log("--- Clic Detectado ---");
             nextFireTime = Time.time + fireRate; 
             
             if (currentAmmo > 0)
