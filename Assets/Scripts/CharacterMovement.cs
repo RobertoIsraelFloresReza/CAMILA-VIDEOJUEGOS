@@ -90,16 +90,17 @@ public class CharacterMovement : MonoBehaviour
 
         if (cameraTransform != null)
         {
-            float currentPitch=0; 
+            float currentPitch = cameraTransform.localEulerAngles.x;
+            if (currentPitch > 180) currentPitch -= 360; 
         
             // 2. Aplicar el input del mouse al pitch actual
-            float rotationAmount = (mouseY * mouseSensitivity) * (invertY ? -1 : 1);
-            cameraPitch -= rotationAmount;
-            
-            cameraPitch = Mathf.Clamp(cameraPitch, minPitch, maxPitch);
+            currentPitch -= (mouseY * mouseSensitivity) * (invertY ? -1 : 1);
         
+            // 3. Aplicar el Clamp (limita el movimiento del mouse)
+            cameraPitch = Mathf.Clamp(currentPitch, minPitch, maxPitch);
+            
             // 4. Aplicar la rotación final SUMANDO el RECOIL
-            Vector3 finalRotation = new Vector3(cameraPitch, 0f, 0f);;
+            Vector3 finalRotation = new Vector3(cameraPitch, 0f, 0f);
 
             if (cameraRecoilScript != null)
             {

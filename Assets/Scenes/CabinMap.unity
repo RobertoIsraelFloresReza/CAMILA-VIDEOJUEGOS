@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.13333334, g: 0.16862746, b: 0.21960786, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.05
@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 121.04
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3809,7 +3809,7 @@ GameObject:
   - component: {fileID: 384216674}
   - component: {fileID: 384216677}
   m_Layer: 0
-  m_Name: Entrance3
+  m_Name: Entrance2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3876,7 +3876,8 @@ MeshRenderer:
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 953608be5de1c474c8b835e430bdf660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3919,7 +3920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef8f6fdb1d664f851bac3f29acbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
-  nextSceneName: ChurchMap
+  nextSceneName: MountainMap
 --- !u!1001 &387565957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4268,7 +4269,7 @@ GameObject:
   - component: {fileID: 431282465}
   - component: {fileID: 431282468}
   m_Layer: 0
-  m_Name: Entrance2
+  m_Name: Entrance3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4335,7 +4336,8 @@ MeshRenderer:
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 953608be5de1c474c8b835e430bdf660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4378,7 +4380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef8f6fdb1d664f851bac3f29acbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
-  nextSceneName: MountainMap
+  nextSceneName: ChurchMap
 --- !u!1001 &449121893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7003,38 +7005,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 939975524}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
 --- !u!4 &939975522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
   m_PrefabInstance: {fileID: 939975521}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &939975523 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-  m_PrefabInstance: {fileID: 939975521}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &939975524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939975523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395563c7835c93745b6253fe386dddec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HouseDoorContoller
-  houseDoor: {fileID: 939975522}
-  openAngle: -90
-  openDuration: 1.5
-  requiredItemID: Key2
-  requiredKeyEvent: 4
 --- !u!1001 &949896053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9857,7 +9834,8 @@ MeshRenderer:
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 953608be5de1c474c8b835e430bdf660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10624,38 +10602,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1608650417}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
 --- !u!4 &1608650415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
   m_PrefabInstance: {fileID: 1608650414}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1608650416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-  m_PrefabInstance: {fileID: 1608650414}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1608650417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608650416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395563c7835c93745b6253fe386dddec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HouseDoorContoller
-  houseDoor: {fileID: 1608650415}
-  openAngle: -90
-  openDuration: 1.5
-  requiredItemID: Key1
-  requiredKeyEvent: 5
 --- !u!1001 &1618248752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11528,7 +11481,8 @@ MeshRenderer:
   m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 953608be5de1c474c8b835e430bdf660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13451,7 +13405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.58
+      value: -3.588249
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13488,38 +13442,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2025754521}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
 --- !u!4 &2025754519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
   m_PrefabInstance: {fileID: 2025754518}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2025754520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 112554, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
-  m_PrefabInstance: {fileID: 2025754518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2025754521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025754520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395563c7835c93745b6253fe386dddec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HouseDoorContoller
-  houseDoor: {fileID: 2025754519}
-  openAngle: -90
-  openDuration: 1.5
-  requiredItemID: Key3
-  requiredKeyEvent: 6
 --- !u!1001 &2036054813
 PrefabInstance:
   m_ObjectHideFlags: 0
