@@ -10,16 +10,15 @@ public class SistemaDeVida : MonoBehaviour
     
     public UnityEvent OnDeath;
 
-    // Referencia al objeto de la barra de vida
-    public Slider healthBar; // AQUI ENLAZAREMOS EL SLIDER DESDE EL EDITOR
+    public Slider healthBar; 
+    
+    private FinalZoneManager finalZoneManager;
     
     void Start()
     {
-        // Inicializa la vida del enemigo
         currentHealth = maxHealth;
         Debug.Log(gameObject.name + " listo. Vida inicial: " + currentHealth);
-        
-        // Configura la barra de vida al inicio
+        finalZoneManager = FindObjectOfType<FinalZoneManager>();
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
@@ -52,6 +51,11 @@ public class SistemaDeVida : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
+        
+        if (finalZoneManager != null && CompareTag("Enemy"))
+        {
+            finalZoneManager.EnemyWasDefeated();
+        }
         
         // Despacha el evento para que otros sistemas reaccionen (ej. animaciones, reinicio de escena).
         OnDeath.Invoke(); 
