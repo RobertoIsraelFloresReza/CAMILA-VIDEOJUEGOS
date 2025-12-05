@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 127
+      value: 121.04
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3809,7 +3809,7 @@ GameObject:
   - component: {fileID: 384216674}
   - component: {fileID: 384216677}
   m_Layer: 0
-  m_Name: Entrance2
+  m_Name: Entrance3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3919,7 +3919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef8f6fdb1d664f851bac3f29acbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
-  nextSceneName: MountainMap
+  nextSceneName: ChurchMap
 --- !u!1001 &387565957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4268,7 +4268,7 @@ GameObject:
   - component: {fileID: 431282465}
   - component: {fileID: 431282468}
   m_Layer: 0
-  m_Name: Entrance3
+  m_Name: Entrance2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4378,7 +4378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef8f6fdb1d664f851bac3f29acbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
-  nextSceneName: ChurchMap
+  nextSceneName: MountainMap
 --- !u!1001 &449121893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13451,7 +13451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.588249
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.z

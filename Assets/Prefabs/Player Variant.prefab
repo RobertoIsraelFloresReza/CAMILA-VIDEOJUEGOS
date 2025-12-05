@@ -634,6 +634,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 684917479199667973, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1218500056477094010}
+    - targetCorrespondingSourceObject: {fileID: 684917479199667973, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7685980221285123154}
     - targetCorrespondingSourceObject: {fileID: 6931766778732131069, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2137588677572181199}
@@ -702,6 +705,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   raycastOriginFixed: {fileID: 6003896325647980631}
+--- !u!114 &7685980221285123154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011415763549402118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f892fa52b53cfa44abd8689e6b50a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
+  maxHealth: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthBar: {fileID: 0}
 --- !u!4 &8363558415664839268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2079970050057910631, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
