@@ -57,14 +57,21 @@ public class SistemaDeVida : MonoBehaviour
             finalZoneManager.EnemyWasDefeated();
         }
         
-        // Despacha el evento para que otros sistemas reaccionen (ej. animaciones, reinicio de escena).
         OnDeath.Invoke(); 
         
-        // Opcional: Desactivar el componente para evitar más lógica (excepto en el jugador, donde queremos reiniciar).
-        if (!CompareTag("Player")) 
+        if (!CompareTag("Player"))
         {
-            // Desactiva el enemigo para que la IA deje de funcionar
-            gameObject.SetActive(false); 
+            EnemiesIA iaScript = GetComponent<EnemiesIA>();
+             
+            if (iaScript != null)
+            {
+                iaScript.Morir();
+            }
+            else
+            {
+                // Si por alguna razón no tiene IA (es una caja o algo así), lo apagamos normal
+                gameObject.SetActive(false);
+            }
         }
     }
 }

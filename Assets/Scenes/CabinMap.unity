@@ -7034,6 +7034,7 @@ MonoBehaviour:
   openAngle: -90
   openDuration: 1.5
   requiredItemID: Key2
+  doorUniqueID: Door2
   requiredKeyEvent: 4
 --- !u!1001 &949896053
 PrefabInstance:
@@ -10712,6 +10713,7 @@ MonoBehaviour:
   openAngle: -90
   openDuration: 1.5
   requiredItemID: Key1
+  doorUniqueID: Door1
   requiredKeyEvent: 5
 --- !u!1001 &1618248752
 PrefabInstance:
@@ -13516,6 +13518,7 @@ MonoBehaviour:
   openAngle: -90
   openDuration: 1.5
   requiredItemID: Key0
+  doorUniqueID: Door0
   requiredKeyEvent: 0
 --- !u!1001 &2021154107
 PrefabInstance:
@@ -13605,7 +13608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13673,6 +13676,7 @@ MonoBehaviour:
   openAngle: -90
   openDuration: 1.5
   requiredItemID: Key3
+  doorUniqueID: Door3
   requiredKeyEvent: 6
 --- !u!1001 &2036054813
 PrefabInstance:

@@ -20,6 +20,10 @@ public class HouseDoorContoller : MonoBehaviour, IInteractable
     [Header("Identificación Requerida")]
     public string requiredItemID;
     
+    [Header("Persistencia")]
+    [Tooltip("ID único para esta puerta. Ej: 'BedroomDoor_Lvl1'")]
+    public string doorUniqueID;
+    
     [Header("Evento Requerido")]
     public GlobalEvents requiredKeyEvent;
     
@@ -28,16 +32,33 @@ public class HouseDoorContoller : MonoBehaviour, IInteractable
         doorCollider = GetComponent<Collider>();
     }
     
+    void Start()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.GetObjectState(doorUniqueID))
+        {
+            houseDoor.transform.localRotation = Quaternion.Euler(0, openAngle, 0); 
+            if (doorCollider != null)
+                doorCollider.enabled = false;
+        
+            Debug.Log($"[PERSISTENCIA] Puerta '{doorUniqueID}' restaurada a estado abierto.");
+        }
+    }
+    
 
-    // NUEVA LÓGICA: El jugador hace clic en la puerta
     public void Interact()
     {
-        // 1. Verificar el estado persistente en el GameManager
         bool keyIsAvailable = GameManager.Instance != null && 
                               GameManager.Instance.HasItem(requiredItemID);
 
         if (keyIsAvailable && !isOpening)
         {
+            
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SetObjectState(doorUniqueID, true);
+            }
+            
+            
             isOpening = true;
             startTime = Time.time;
             if (doorCollider != null)

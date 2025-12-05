@@ -31,7 +31,6 @@ public class FinalZoneManager : MonoBehaviour
 
         if (enemiesDefeated >= totalEnemies)
         {
-            // Hemos matado a todos
             if (victoryScreen != null)
             {
                 victoryScreen.ShowVictory();

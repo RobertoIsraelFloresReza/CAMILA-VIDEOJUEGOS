@@ -7,8 +7,6 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     [Header("Componentes")]
     public NavMeshAgent agent;
     public Animator animator;
-    
-    public SistemaDeVida healthController;
 
     [Header("Sensores")]
     public Transform player;
@@ -27,17 +25,10 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
 
-        if (healthController == null) healthController = GetComponent<SistemaDeVida>();
-        if (healthController != null)
-        {
-            // Suscribirse al evento de muerte
-            healthController.OnDeath.AddListener(HandleDeath);
-        }
-        
         // Inicializamos animaciones
         RandomizeIdle();
 
-        // Iniciamos la m�quina de estados
+        // Iniciamos la máquina de estados
         ChangeState(new PatrollingState(this));
 
         while (true)
@@ -63,21 +54,6 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
             yield return new WaitForSeconds(0.2f);
         }
     }
-    
-    private void HandleDeath()
-    {
-        // Bloqueamos la IA
-        agent.isStopped = true;
-        
-        // Opcional: Reproducir animación de muerte (si tienes una)
-        // animator.SetTrigger("Die"); 
-        
-        // Asegurarse de que el objeto sea destruido o desactivado (ya lo maneja HealthController.Die, pero bueno reforzar)
-        Destroy(gameObject, 2f); // Destruir después de 2 segundos
-        
-        // Quitamos la referencia de escucha
-        healthController.OnDeath.RemoveListener(HandleDeath);
-    }
 
     void Update()
     {
@@ -91,6 +67,16 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
         CurrentState = newState;
         CurrentState?.Enter();
     }
+
+
+    // --- FUNCIÓN PARA RECIBIR DAÑO/MORIR ---
+    public void Morir()
+    {
+        if (CurrentState is DeathState) return;
+
+        ChangeState(new DeathState(this));
+    }
+
 
     // --- FUNCIONES AUXILIARES PARA ANIMATOR ---
     public void SetWalking(bool isWalking)
@@ -122,8 +108,6 @@ public struct PatrollingState : IState
     public EnemiesIA StateMachine { get; private set; }
     private int wpindex;
     private float threshold;
-    
-    
 
     // Variables de espera
     private bool isWaiting;
@@ -197,7 +181,7 @@ public struct PatrollingState : IState
 
         StateMachine.agent.isStopped = true; // Frenamos
         StateMachine.agent.velocity = Vector3.zero;
-        StateMachine.SetWalking(false);      // Animaci�n Idle
+        StateMachine.SetWalking(false);      // Animación Idle
         StateMachine.RandomizeIdle();
     }
 
@@ -215,7 +199,7 @@ public struct PatrollingState : IState
     }
 }
 
-// ESTADO: PERSECUCI�N
+// ESTADO: PERSECUCIÓN
 public struct ChasingState : IState
 {
     public EnemiesIA StateMachine { get; private set; }
@@ -250,17 +234,6 @@ public struct ChasingState : IState
             timerAttack += deltaTime;
             if (timerAttack >= 2.0f)
             {
-                SistemaDeVida playerHealth = StateMachine.player.GetComponent<SistemaDeVida>();
-                
-                if (playerHealth != null)
-                {
-                    // 2. Aplicamos daño (ajusta el valor del daño del enemigo)
-                    float enemyDamage = 50000f; 
-                    playerHealth.TakeDamage(enemyDamage);
-                
-                    // Si el jugador muere, el HealthController.OnDeath se disparará.
-                }
-                
                 StateMachine.RandomizeAttack();
                 StateMachine.TriggerAttack();
                 timerAttack = 0f;
@@ -294,5 +267,42 @@ public struct ChasingState : IState
     {
         StateMachine.SetWalking(false);
         if (StateMachine.agent.isActiveAndEnabled) StateMachine.agent.isStopped = false;
+    }
+}
+
+
+// ESTADO: MUERTE
+public struct DeathState : IState
+{
+    public EnemiesIA StateMachine { get; private set; }
+
+    public DeathState(EnemiesIA stateMachine)
+    {
+        StateMachine = stateMachine;
+    }
+
+    public void Enter()
+    {
+        if (StateMachine.agent.isActiveAndEnabled)
+        {
+            StateMachine.agent.isStopped = true;
+            StateMachine.agent.enabled = false; 
+        }
+
+        var collider = StateMachine.GetComponent<Collider>();
+        if (collider != null) collider.enabled = false;
+
+        if (StateMachine.animator != null) StateMachine.animator.SetBool("isDead", true);
+
+        Object.Destroy(StateMachine.gameObject, 4.0f);
+    }
+
+    public void Tick(float deltaTime)
+    {
+
+    }
+
+    public void Exit()
+    {
     }
 }
