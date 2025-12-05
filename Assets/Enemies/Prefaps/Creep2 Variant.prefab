@@ -76,9 +76,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4907239047242697928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8306338077452790598}
-    - targetCorrespondingSourceObject: {fileID: 4907239047242697928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4365879211901968001}
   m_SourcePrefab: {fileID: 100100000, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
 --- !u!1 &4717044037595624047 stripped
 GameObject:
@@ -121,7 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemiesIA
   agent: {fileID: 1307146950079730657}
   animator: {fileID: 7074394850045429551}
-  healthController: {fileID: 0}
   player: {fileID: 0}
   detectionRadius: 10
   isPlayerSighted: 0
@@ -130,29 +126,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!136 &4365879211901968001
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717044037595624047}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &7074394850045429551 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7440230004507457928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}

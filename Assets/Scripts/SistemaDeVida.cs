@@ -1,14 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI; // ¡IMPORTANTE! Necesario para usar el componente Slider
 
 public class SistemaDeVida : MonoBehaviour
 {
     // Variables para la vida
-    public float maxHealth = 100f;
-    private float currentHealth;
-    
-    public UnityEvent OnDeath;
+    public int maxHealth = 100;
+    private int currentHealth;
 
     // Referencia al objeto de la barra de vida
     public Slider healthBar; // AQUI ENLAZAREMOS EL SLIDER DESDE EL EDITOR
@@ -28,7 +25,7 @@ public class SistemaDeVida : MonoBehaviour
     }
 
     // Función pública llamada por la escopeta para aplicar daño
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         // Resta el daño de la vida actual
         currentHealth -= damageAmount;
@@ -49,18 +46,20 @@ public class SistemaDeVida : MonoBehaviour
     }
 
     // Función para manejar la destrucción del enemigo
-    private void Die()
+    void Die()
     {
-        Debug.Log($"{gameObject.name} ha muerto.");
+        Debug.Log(gameObject.name + " ha muerto.");
         
-        // Despacha el evento para que otros sistemas reaccionen (ej. animaciones, reinicio de escena).
-        OnDeath.Invoke(); 
-        
-        // Opcional: Desactivar el componente para evitar más lógica (excepto en el jugador, donde queremos reiniciar).
-        if (!CompareTag("Player")) 
+        // Destruye la barra de vida y el enemigo
+        if (healthBar != null)
         {
-            // Desactiva el enemigo para que la IA deje de funcionar
-            gameObject.SetActive(false); 
+            // Opcional: Destruir el Canvas que contiene la barra de vida
+            Destroy(healthBar.transform.parent.gameObject);
         }
+
+        // Destruye el GameObject (el cubo)
+        Destroy(gameObject);
+
+        // Aquí podrías agregar efectos de explosión, sonido de muerte, etc.
     }
 }
