@@ -79,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4907239047242697928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4365879211901968001}
+    - targetCorrespondingSourceObject: {fileID: 4907239047242697928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3417029958224874506}
   m_SourcePrefab: {fileID: 100100000, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}
 --- !u!1 &4717044037595624047 stripped
 GameObject:
@@ -121,7 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemiesIA
   agent: {fileID: 1307146950079730657}
   animator: {fileID: 7074394850045429551}
-  healthController: {fileID: 0}
   player: {fileID: 0}
   detectionRadius: 10
   isPlayerSighted: 0
@@ -153,6 +155,23 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3417029958224874506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717044037595624047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f892fa52b53cfa44abd8689e6b50a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
+  maxHealth: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthBar: {fileID: 0}
 --- !u!95 &7074394850045429551 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7440230004507457928, guid: 82430f94fd1381c43878fce981a5aa43, type: 3}

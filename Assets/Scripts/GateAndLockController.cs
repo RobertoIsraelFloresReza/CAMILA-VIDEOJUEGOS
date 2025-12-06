@@ -23,6 +23,10 @@ public class GateAndLockController : MonoBehaviour, IInteractable
     [Header("Evento Requerido")]
     public GlobalEvents requiredKeyEvent;
     
+    [Header("Persistencia")]
+    [Tooltip("ID único para esta puerta. Ej: 'Gate_Red_01'")]
+    public string doorUniqueID;
+    
     private void OnEnable()
     {
         EventManager.Subscribe(requiredKeyEvent, EnableLockInteraction);
@@ -44,6 +48,42 @@ public class GateAndLockController : MonoBehaviour, IInteractable
             OpenDoors();
         }
     }
+    
+    void Start()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.GetObjectState(doorUniqueID))
+        {
+            Debug.Log($"[PERSISTENCIA] Puerta '{doorUniqueID}' ya abierta. Restaurando estado...");
+
+            InitializeOpenState();
+        }
+        else
+        {
+            // Inicializamos las rotaciones iniciales si la puerta está cerrada
+            _startLeftRotation = leftDoor.transform.localRotation;
+            _startRightRotation = rightDoor.transform.localRotation;
+        }
+    }
+    
+    private void InitializeOpenState() // <--- NUEVA FUNCIÓN AUXILIAR
+    {
+        Quaternion tempStartLeft = leftDoor.transform.localRotation; 
+        Quaternion tempEndLeft = tempStartLeft * Quaternion.Euler(0, openAngle, 0);
+        Quaternion tempStartRight = rightDoor.transform.localRotation; 
+        Quaternion tempEndRight = tempStartRight * Quaternion.Euler(0, -openAngle, 0);
+        
+        leftDoor.transform.localRotation = tempEndLeft;
+        rightDoor.transform.localRotation = tempEndRight;
+
+        if (lockObject != null)
+        {
+            lockObject.SetActive(false);
+        }
+        GetComponent<Collider>().enabled = false;
+        
+        isOpening = false;
+        keyUsed = true;
+    }
 
     private void OpenDoors()
     {
@@ -54,8 +94,13 @@ public class GateAndLockController : MonoBehaviour, IInteractable
             lockObject.SetActive(false);
             GetComponent<Collider>().enabled = false; 
         }
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetObjectState(doorUniqueID, true);
+        }
 
-        Debug.Log("Funcion OpenDoors, abriendo puertas");
+      //  Debug.Log("Funcion OpenDoors, abriendo puertas");
         startTime = Time.time;
         
         _startLeftRotation = leftDoor.transform.localRotation; 

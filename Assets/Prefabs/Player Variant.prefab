@@ -598,6 +598,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003406389707278541, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: m_Range
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003406389707278541, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: m_Intensity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003406389707278541, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003406389707278541, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003406389707278541, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4999647220786439522, guid: 69fc1899f6ab70f49b023b4f86eed52d, type: 3}
       propertyPath: jumpForce
       value: 5

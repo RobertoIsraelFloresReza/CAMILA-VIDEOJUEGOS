@@ -10,16 +10,15 @@ public class SistemaDeVida : MonoBehaviour
     
     public UnityEvent OnDeath;
 
-    // Referencia al objeto de la barra de vida
-    public Slider healthBar; // AQUI ENLAZAREMOS EL SLIDER DESDE EL EDITOR
+    public Slider healthBar; 
+    
+    private FinalZoneManager finalZoneManager;
     
     void Start()
     {
-        // Inicializa la vida del enemigo
         currentHealth = maxHealth;
-        Debug.Log(gameObject.name + " listo. Vida inicial: " + currentHealth);
-        
-        // Configura la barra de vida al inicio
+    ///    Debug.Log(gameObject.name + " listo. Vida inicial: " + currentHealth);
+        finalZoneManager = FindObjectOfType<FinalZoneManager>();
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
@@ -27,40 +26,46 @@ public class SistemaDeVida : MonoBehaviour
         }
     }
 
-    // Función pública llamada por la escopeta para aplicar daño
     public void TakeDamage(float damageAmount)
     {
-        // Resta el daño de la vida actual
         currentHealth -= damageAmount;
 
         Debug.Log(gameObject.name + " ha recibido " + damageAmount + " de daño. Vida restante: " + currentHealth);
         
-        // Actualiza el valor del Slider cada vez que recibe daño
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
         }
 
-        // Verifica si la vida ha llegado a cero
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    // Función para manejar la destrucción del enemigo
     private void Die()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
         
-        // Despacha el evento para que otros sistemas reaccionen (ej. animaciones, reinicio de escena).
+        if (finalZoneManager != null && CompareTag("Enemy"))
+        {
+            finalZoneManager.EnemyWasDefeated();
+        }
+        
         OnDeath.Invoke(); 
         
-        // Opcional: Desactivar el componente para evitar más lógica (excepto en el jugador, donde queremos reiniciar).
-        if (!CompareTag("Player")) 
+        if (!CompareTag("Player"))
         {
-            // Desactiva el enemigo para que la IA deje de funcionar
-            gameObject.SetActive(false); 
+            EnemiesIA iaScript = GetComponent<EnemiesIA>();
+             
+            if (iaScript != null)
+            {
+                iaScript.Morir();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

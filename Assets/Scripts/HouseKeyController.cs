@@ -9,6 +9,19 @@ public class HouseKeyController : MonoBehaviour, IInteractable
     
     [SerializeField] private Transform keyModel;
     
+    void Start()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.HasItem(keyID))
+        {
+            if (keyModel != null)
+            {
+                keyModel.gameObject.SetActive(false);
+            }
+            GetComponent<Collider>().enabled = false;
+            Debug.Log($"[PERSISTENCIA] Llave '{keyID}' ya en posesión, desactivada.");
+        }
+    }
+    
     public void Interact()
     {
         if (GameManager.Instance != null)
