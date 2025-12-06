@@ -17,7 +17,7 @@ public class SistemaDeVida : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        Debug.Log(gameObject.name + " listo. Vida inicial: " + currentHealth);
+    ///    Debug.Log(gameObject.name + " listo. Vida inicial: " + currentHealth);
         finalZoneManager = FindObjectOfType<FinalZoneManager>();
         if (healthBar != null)
         {
@@ -26,28 +26,23 @@ public class SistemaDeVida : MonoBehaviour
         }
     }
 
-    // Función pública llamada por la escopeta para aplicar daño
     public void TakeDamage(float damageAmount)
     {
-        // Resta el daño de la vida actual
         currentHealth -= damageAmount;
 
         Debug.Log(gameObject.name + " ha recibido " + damageAmount + " de daño. Vida restante: " + currentHealth);
         
-        // Actualiza el valor del Slider cada vez que recibe daño
         if (healthBar != null)
         {
             healthBar.value = currentHealth;
         }
 
-        // Verifica si la vida ha llegado a cero
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    // Función para manejar la destrucción del enemigo
     private void Die()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
@@ -69,7 +64,6 @@ public class SistemaDeVida : MonoBehaviour
             }
             else
             {
-                // Si por alguna razón no tiene IA (es una caja o algo así), lo apagamos normal
                 gameObject.SetActive(false);
             }
         }

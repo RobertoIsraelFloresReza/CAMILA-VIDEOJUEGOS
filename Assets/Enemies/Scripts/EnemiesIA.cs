@@ -7,6 +7,8 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     [Header("Componentes")]
     public NavMeshAgent agent;
     public Animator animator;
+    
+    public SistemaDeVida healthController;
 
     [Header("Sensores")]
     public Transform player;
@@ -19,12 +21,20 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
 
     [Header("Patrullaje")]
     public Transform[] waypoints;
+    
+    [Header("Capas de Detección")]
+    [Tooltip("Capas que el Raycast debe IGNORAR (ej. la capa del propio enemigo o de elementos que se quieren atravesar).")]
+    public LayerMask layersToIgnore;
+    [Header("Detección")]
+    [Tooltip("La máscara que contiene SÓLO la capa del jugador (ej. 'Player').")]
+    public LayerMask playerLayer;
 
     IEnumerator Start()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
 
+        
         // Inicializamos animaciones
         RandomizeIdle();
 
@@ -45,7 +55,18 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
                 var dot = Vector3.Dot(vectorToPlayer, transform.forward);
 
                 if (dot < 0) continue;
-                Physics.Raycast(transform.position + Vector3.up * 1.5f, vectorToPlayer, out var hit);
+                
+                int finalLayerMask = ~layersToIgnore;
+                
+                Physics.Raycast(
+                    transform.position + Vector3.up * 1.5f, 
+                    vectorToPlayer, 
+                    out var hit, 
+                    detectionRadius, 
+                    playerLayer 
+                );
+                
+                Debug.DrawRay(transform.position + Vector3.up * 1.5f, vectorToPlayer.normalized * detectionRadius, hit.collider != null && hit.collider.transform == player ? Color.green : Color.red, 0.2f);
 
                 if (hit.collider != null && hit.collider.transform != player) continue;
 
@@ -234,6 +255,15 @@ public struct ChasingState : IState
             timerAttack += deltaTime;
             if (timerAttack >= 2.0f)
             {
+                SistemaDeVida playerHealth = StateMachine.player.GetComponent<SistemaDeVida>();
+
+                if (playerHealth != null)
+                {
+                    float enemyDamage = 50000f; 
+                    playerHealth.TakeDamage(enemyDamage);
+
+                }
+                
                 StateMachine.RandomizeAttack();
                 StateMachine.TriggerAttack();
                 timerAttack = 0f;

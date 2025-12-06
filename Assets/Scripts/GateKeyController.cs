@@ -5,6 +5,7 @@ public class GateKeyController : MonoBehaviour, IInteractable
 {
     [Header("Identificación de la Llave")]
     public string keyID;
+    
     [Header("Evento Asociado")]
     public GlobalEvents keyOpensEvent;
     

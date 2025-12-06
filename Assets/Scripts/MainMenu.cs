@@ -1,27 +1,56 @@
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
+using UnityEngine;
 
-    public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
+{
+    [Header("UI Panels")]
+    public GameObject mainMenu;
+    public GameObject options;
+    public GameObject credits;
+
+    private GameObject currentPanel;
+
+    void Start()
     {
-        public GameObject optionsMenu;
-        public GameObject mainMenu;
-        
-        public void OpenOptionsPanel()
-        {
-            mainMenu.SetActive(false);
-            optionsMenu.SetActive(true);
-        }
-        public void OpenMainPanel()
-        {
-            optionsMenu.SetActive(false);
-            mainMenu.SetActive(true);
-        }
-        public void QuitGame()
-        {
-            Application.Quit();
-        }
-        public void PlayGame()
-        {
-            SceneManager.LoadScene("CabinMap");
-        }
+        ShowPanel(mainMenu);
     }
+
+    public void ShowPanel(GameObject panelToShow)
+    {
+        if (currentPanel != null)
+        {
+            currentPanel.SetActive(false);
+        }
+
+        panelToShow.SetActive(true);
+        currentPanel = panelToShow;
+    }
+
+    public void ShowMainMenu()
+    {
+        ShowPanel(mainMenu);
+    }
+
+    public void ShowOptions()
+    {
+        ShowPanel(options);
+    }
+
+    public void ShowCredits()
+    {
+        ShowPanel(credits);
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+    }
+
+    public void PlayGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CabinMap");
+    }
+}

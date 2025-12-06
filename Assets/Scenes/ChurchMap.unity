@@ -579,7 +579,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -857,7 +858,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1286,7 +1288,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1539,7 +1542,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1970581519}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1901,7 +1905,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 907083930}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1989,7 +1994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668414704657870204, guid: 38980216a9b910e4592cf81a25fbb017, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.954765
+      value: 8.92
       objectReference: {fileID: 0}
     - target: {fileID: 7668414704657870204, guid: 38980216a9b910e4592cf81a25fbb017, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2183,7 +2188,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[4]'
       value: 
       objectReference: {fileID: 468877643}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2556,7 +2562,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2896,7 +2903,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3590,7 +3598,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1889905348}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3770,7 +3779,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1889905348}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4717,7 +4727,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[2]'
       value: 
       objectReference: {fileID: 907083930}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4801,7 +4812,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[2]'
       value: 
       objectReference: {fileID: 2136120653}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4915,7 +4927,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 468877643}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5226,7 +5239,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5465,7 +5479,7 @@ PrefabInstance:
     - target: {fileID: 1242614188777742537, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: 'waypoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 468877643}
+      objectReference: {fileID: 907083930}
     - target: {fileID: 1242614188777742537, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: 'waypoints.Array.data[2]'
       value: 
@@ -5526,7 +5540,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6133,7 +6148,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 907083930}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6770,7 +6786,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7048,7 +7065,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7144,7 +7162,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7780,7 +7799,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -7894,7 +7914,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 907083930}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -8486,7 +8507,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1970581519}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -9341,7 +9363,7 @@ PrefabInstance:
     - target: {fileID: 1242614188777742537, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: 'waypoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 468877643}
+      objectReference: {fileID: 1970581519}
     - target: {fileID: 1242614188777742537, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: 'waypoints.Array.data[2]'
       value: 
@@ -9398,7 +9420,8 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5352180545363586842, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -9556,7 +9579,8 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1889905348}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3417029958224874506, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
