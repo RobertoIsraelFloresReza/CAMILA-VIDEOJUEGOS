@@ -4,23 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionController : MonoBehaviour, IInteractable
 {[Header("Escena de Destino")]
-    [Tooltip("El nombre EXACTO de la siguiente escena a cargar (debe estar en Build Settings). Ej: 'Level2'")]
     public string nextSceneName;
 
-    // Esta función se llama cuando el jugador interactúa con este objeto
+    public string spawnPointOnReturn;
+
     public void Interact()
     {
-        // 1. Verificación de seguridad
         if (string.IsNullOrEmpty(nextSceneName))
         {
             Debug.LogError("ERROR: El nombre de la escena de destino no está configurado en el Inspector.");
             return;
         }
-
-        // 2. Cargar la siguiente escena
-        Debug.Log($"[TRANSICIÓN] Interacción detectada. Cargando escena: {nextSceneName}");
+        Debug.Log($"[DEBUG TRANSITION]: Valor de spawnPointOnReturn al interactuar: '{spawnPointOnReturn}'"); 
         
-        // El corazón de la función: carga la escena por su nombre.
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("[DEBUG TRANSITION]: GameManager.Instance es NULL. No se puede guardar el punto de spawn.");
+            return;
+        }
+
+        GameManager.Instance.SetNextSpawnPoint(spawnPointOnReturn);
+        
+        Debug.Log($"[DEBUG TRANSITION]: Spawn Point GUARDADO. Cargando escena: {nextSceneName}");
+        
         SceneManager.LoadScene(nextSceneName);
     }
 }

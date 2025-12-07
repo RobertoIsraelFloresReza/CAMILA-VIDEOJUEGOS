@@ -581,9 +581,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 943182302}
   - {fileID: 1485116274}
+  - {fileID: 478742927}
   - {fileID: 384216673}
+  - {fileID: 882198281}
   - {fileID: 431282464}
+  - {fileID: 1797787249}
   - {fileID: 1688110234}
   m_Father: {fileID: 362269155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1180,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1188,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1200,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8363558415664839268, guid: 429acab43f173154a93d27aa9d325206, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3921,6 +3925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
   nextSceneName: ChurchMap
+  spawnPointOnReturn: Church_Spawn
 --- !u!1001 &387565957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4380,6 +4385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
   nextSceneName: MountainMap
+  spawnPointOnReturn: Mountain_Spawn
 --- !u!1001 &449121893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4577,6 +4583,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 485384, guid: fe816015a58e629439b27ecca9cdb110, type: 3}
   m_PrefabInstance: {fileID: 476341850}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &478742926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478742927}
+  m_Layer: 0
+  m_Name: Church_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478742927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478742926}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.375977, y: 2.4700012, z: -49.690002}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49844128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &495759271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5714,6 +5751,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 469502, guid: 04c36f15bbecd854cab50deedb5c594f, type: 3}
   m_PrefabInstance: {fileID: 664820417}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &666228691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666228693}
+  - component: {fileID: 666228692}
+  m_Layer: 0
+  m_Name: Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &666228692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666228691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d116221d3a1e6468656fa101a92033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CabinLevelManager
+--- !u!4 &666228693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666228691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 480.2794, y: 892.7606, z: 66.24976}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &673735258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6662,6 +6743,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 469502, guid: 04c36f15bbecd854cab50deedb5c594f, type: 3}
   m_PrefabInstance: {fileID: 875827523}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &882198280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 882198281}
+  m_Layer: 0
+  m_Name: Mountain_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &882198281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882198280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.4765, y: 4.1825943, z: 10.272858}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49844128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &896916572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7038,6 +7150,37 @@ MonoBehaviour:
   requiredItemID: Key2
   doorUniqueID: Door2
   requiredKeyEvent: 4
+--- !u!1 &943182301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943182302}
+  m_Layer: 0
+  m_Name: NorthWest_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &943182302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943182301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -162.94, y: 0.23000336, z: -29.820007}
+  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49844128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &949896053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9001,6 +9144,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 469502, guid: 04c36f15bbecd854cab50deedb5c594f, type: 3}
   m_PrefabInstance: {fileID: 1325966073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1337375869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337375871}
+  - component: {fileID: 1337375870}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1337375870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337375869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f015595a58a1c4f4aacf9e034c6e60c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawn
+--- !u!4 &1337375871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337375869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 511.44263, y: 118.65586, z: 414.5952}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1345753256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9962,6 +10149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
   nextSceneName: NorthWestMap
+  spawnPointOnReturn: NorthWest_Spawn
 --- !u!1 &1497258827
 GameObject:
   m_ObjectHideFlags: 0
@@ -10648,7 +10836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.588249
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11634,6 +11822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
   nextSceneName: LakeMap
+  spawnPointOnReturn: Lake_Spawn
 --- !u!1001 &1696289130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12597,6 +12786,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 494330, guid: b6995a63df49222409e4c1ba3567bb78, type: 3}
   m_PrefabInstance: {fileID: 1787257229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1797787248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797787249}
+  m_Layer: 0
+  m_Name: Lake_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1797787249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797787248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -161.6828, y: 0.86299896, z: -45.369995}
+  m_LocalScale: {x: 1.2130568, y: 1.0000408, z: 1.7869027}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49844128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808662164
 GameObject:
   m_ObjectHideFlags: 0
@@ -13611,7 +13831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.73
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 452960, guid: ea087b00cc97e5e44bdedeeccb899e05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14219,3 +14439,5 @@ SceneRoots:
   - {fileID: 1918952542}
   - {fileID: 1355835414}
   - {fileID: 2052663618}
+  - {fileID: 666228693}
+  - {fileID: 1337375871}

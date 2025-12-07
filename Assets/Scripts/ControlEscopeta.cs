@@ -24,24 +24,22 @@ public class ControlEscopeta : MonoBehaviour
     private CmeraRecoil cameraRecoilScript;
 
     [Header("3. Retroceso (Recoil)")]
-    public float recoilX = -5f;      // Ángulo de retroceso en el eje X (hacia arriba)
-    public float recoilDuration = 0.1f; // Tiempo que dura el retroceso
-    private Vector3 originalRotation; // Rotación inicial del arma
+    public float recoilX = -5f;      
+    public float recoilDuration = 0.1f; 
+    private Vector3 originalRotation; 
 
     [Header("4. Efectos Visuales")]
-    public Light muzzleFlashLight;   // Arrastra aquí el componente Light del "muzzle flash"
-    public float flashDuration = 0.05f; // Duración en segundos del flash
-    public ParticleSystem hitParticles; // Partículas que aparecerán al impactar algo (opcional)
+    public Light muzzleFlashLight;  
+    public float flashDuration = 0.05f;
+    public ParticleSystem hitParticles; 
     
     void OnEnable()
     {
         EventManager.Subscribe(GlobalEvents.WeaponAdquired, SetWeaponAdquired);
         originalRotation = transform.localRotation.eulerAngles;
-        Debug.Log($"[ON ENABLE] Activando arma. Rotación actual: {transform.localRotation.eulerAngles}");
-        if (isWeaponAdquired)
-        {
-            currentAmmo = maxAmmo;
-        }
+     //   Debug.Log($"[ON ENABLE] Activando arma. Rotación actual: {transform.localRotation.eulerAngles}");
+
+     UpdateUI();
         
         nextFireTime = Time.time;
     }
@@ -55,20 +53,38 @@ public class ControlEscopeta : MonoBehaviour
     {
         isWeaponAdquired = true;
         currentAmmo = maxAmmo; // Inicializamos la munición al recogerla
-        Debug.Log("ControlEscopeta: ¡Arma adquirida! Lista para usar.");
+      //  Debug.Log("ControlEscopeta: ¡Arma adquirida! Lista para usar.");
     }
-    
+    private AmmoDisplay ammoDisplay;
     private bool isWeaponAdquired = false;
     void Start()
     {
-        // Intenta obtener el estado al iniciar la escena
+        ammoDisplay = FindObjectOfType<AmmoDisplay>();
+        if (ammoDisplay == null)
+        {
+            Debug.LogError("Error: No se encontró el componente AmmoDisplay en la escena.");
+        }
+        
+        if (GameManager.Instance != null && GameManager.Instance.HasItem(weaponItemID))
+        {
+            isWeaponAdquired = true;
+            currentAmmo = maxAmmo; 
+            UpdateUI(); 
+        }
+
+        if (GameManager.Instance != null && GameManager.Instance.HasItem(weaponItemID))
+        {
+            isWeaponAdquired = true;
+            currentAmmo = maxAmmo;
+            UpdateUI(); 
+        }
+        
         if (GameManager.Instance != null && GameManager.Instance.HasItem(weaponItemID))
         {
             isWeaponAdquired = true;
             currentAmmo = maxAmmo;
         }
     
-        // Si aún no la tiene, se suscribe al evento para recibir la notificación
         if (!isWeaponAdquired && GameManager.Instance != null)
         {
             GameManager.Instance.OnItemCollected += CheckWeaponAcquired;
@@ -85,9 +101,17 @@ public class ControlEscopeta : MonoBehaviour
         }
     }
     
+    void UpdateUI()
+    {
+        if (ammoDisplay != null)
+        {
+            ammoDisplay.UpdateAmmoUI(currentAmmo, maxAmmo);
+            ammoDisplay.SetActive(isWeaponAdquired);
+        }
+    }
+    
     void OnDestroy()
     {
-        // Limpieza al destruir el objeto (importante)
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnItemCollected -= CheckWeaponAcquired;
@@ -100,7 +124,8 @@ public class ControlEscopeta : MonoBehaviour
         {
             isWeaponAdquired = true;
             currentAmmo = maxAmmo;
-            Debug.Log("ControlEscopeta: ¡Arma adquirida vía Singleton!");
+            UpdateUI();
+          //  Debug.Log("ControlEscopeta: ¡Arma adquirida vía Singleton!");
             GameManager.Instance.OnItemCollected -= CheckWeaponAcquired; 
         }
     }
@@ -108,18 +133,16 @@ public class ControlEscopeta : MonoBehaviour
     void Shoot()
     {
         currentAmmo--;
+        UpdateUI();
     
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, shootDistance))
         {
-            // 1. Verificar si el objetivo tiene un componente de salud
             SistemaDeVida targetHealth = hit.collider.GetComponent<SistemaDeVida>();
 
             if (targetHealth != null)
             {
-                // 2. Aplicar daño al objetivo
                 targetHealth.TakeDamage(shotgunDamage);
 
-                // Opcional: Spawn de partículas de impacto (si tienes hitParticles configurado)
                 if (hitParticles != null)
                 {
                     Instantiate(hitParticles, hit.point, Quaternion.LookRotation(hit.normal));
@@ -131,14 +154,12 @@ public class ControlEscopeta : MonoBehaviour
         StartCoroutine(DoRecoil());
         StartCoroutine(FlashEffect());
 
-        // 2. Disparar el retroceso de la cámara
         if (cameraRecoilScript != null)
         {
             cameraRecoilScript.GenerateRecoil();
         }
     }
     
-    // Coroutine para el efecto de Retroceso (Recoil)
     IEnumerator DoRecoil()
     {
         Quaternion targetRotation = Quaternion.Euler(originalRotation.x + recoilX, originalRotation.y, originalRotation.z);
@@ -162,7 +183,6 @@ public class ControlEscopeta : MonoBehaviour
             yield return null;
         }
 
-        // Asegura que termine en la posición original
         transform.localRotation = Quaternion.Euler(originalRotation);
     }
 
@@ -172,7 +192,6 @@ public class ControlEscopeta : MonoBehaviour
         if (muzzleFlashLight != null)
         {
             muzzleFlashLight.enabled = true;
-            // Espera un breve instante (ej. 0.05 segundos)
             yield return new WaitForSeconds(flashDuration); 
             muzzleFlashLight.enabled = false;
         }
@@ -189,9 +208,9 @@ void Update()
 
         if (Mouse.current.leftButton.wasPressedThisFrame && Time.time >= nextFireTime)
         {
-            Debug.Log("--- Disparo Autorizado por FireRate ---");
+          //  Debug.Log("--- Disparo Autorizado por FireRate ---");
             
-            Debug.Log("--- Clic Detectado ---");
+         //   Debug.Log("--- Clic Detectado ---");
             nextFireTime = Time.time + fireRate; 
             
             if (currentAmmo > 0)
@@ -214,16 +233,16 @@ void Update()
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Recargando...");
+        //Debug.Log("Recargando...");
         reloadSound.Play();
+        if (ammoDisplay != null) ammoDisplay.SetReloading(true);
 
-        // Espera el tiempo de recarga
         yield return new WaitForSeconds(reloadTime);
 
-        // Recarga completa
         currentAmmo = maxAmmo;
         isReloading = false;
-        Debug.Log("¡Recarga completa! Munición: " + currentAmmo + "/" + maxAmmo);
+        UpdateUI();
+        //Debug.Log("¡Recarga completa! Munición: " + currentAmmo + "/" + maxAmmo);
     }
     
     

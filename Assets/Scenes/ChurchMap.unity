@@ -575,6 +575,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -858,6 +862,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8848182523527254617, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: uniqueID
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
@@ -1023,6 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1045,6 +1054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1129,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1284,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -1315,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1455,9 +1471,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1596242549242956662, guid: 429acab43f173154a93d27aa9d325206, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 409756147}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 429acab43f173154a93d27aa9d325206, type: 3}
+--- !u!224 &308571868 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1596242549242956662, guid: 429acab43f173154a93d27aa9d325206, type: 3}
+  m_PrefabInstance: {fileID: 308571867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &331900765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1469,6 +1493,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1631,6 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1821,6 +1850,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 426280, guid: 73a46d03e13dd2b4ebddaeb829191c7d, type: 3}
   m_PrefabInstance: {fileID: 389191746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &409756144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409756147}
+  - component: {fileID: 409756146}
+  - component: {fileID: 409756145}
+  m_Layer: 5
+  m_Name: EnemyCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &409756145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409756144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Ac\xE1balos a todos"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &409756146
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409756144}
+  m_CullTransparentMesh: 1
+--- !u!224 &409756147
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409756144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 308571868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -269.8, y: 108.6}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &421702510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1832,6 +1997,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2112,6 +2281,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 748.8
@@ -2322,6 +2495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionController
   nextSceneName: CabinMap
+  spawnPointOnReturn: Church_Spawn
 --- !u!1 &509233649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2731,10 @@ PrefabInstance:
     - target: {fileID: 2205433470074194242, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
@@ -2903,6 +3081,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8848182523527254617, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: uniqueID
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
@@ -2930,6 +3112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -3448,6 +3631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -3525,6 +3709,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3625,6 +3813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -3702,6 +3891,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3986,6 +4179,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 433038, guid: 51e1ec27a31e16a4ba99622c680fd8ec, type: 3}
   m_PrefabInstance: {fileID: 845490877}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &864829592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864829594}
+  - component: {fileID: 864829593}
+  m_Layer: 0
+  m_Name: EnemyCountDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &864829593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864829592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ba849602e844a458a6c000f2c2f737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCountDisplay
+  countText: {fileID: 409756145}
+--- !u!4 &864829594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864829592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 768.7616, y: 11.74557, z: 219.88379}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &867845296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4280,6 +4518,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 433038, guid: 51e1ec27a31e16a4ba99622c680fd8ec, type: 3}
   m_PrefabInstance: {fileID: 911644230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &917978909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917978911}
+  - component: {fileID: 917978910}
+  m_Layer: 0
+  m_Name: ChurchLevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &917978910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917978909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27863a88c9eaad4bb846c1fb2fca224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChurchLevelManager
+--- !u!4 &917978911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917978909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 551.42413, y: 125.64935, z: 425.15805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &919287733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4663,6 +4945,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 769.78
@@ -4747,6 +5033,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4839,6 +5129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -4854,6 +5145,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4954,6 +5249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -5235,6 +5531,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -5266,6 +5566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -5536,6 +5837,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -5567,6 +5872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -5589,6 +5895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -5998,6 +6305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -6075,6 +6383,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6175,6 +6487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -6698,6 +7011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -6785,6 +7099,10 @@ PrefabInstance:
     - target: {fileID: 7472714829504285622, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848182523527254617, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: uniqueID
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
@@ -7065,6 +7383,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8848182523527254617, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: uniqueID
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2876014869262239853, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
     m_RemovedGameObjects: []
@@ -7157,6 +7479,10 @@ PrefabInstance:
     - target: {fileID: 2205433470074194242, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
@@ -7454,6 +7780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -7795,6 +8122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -7826,6 +8157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -7841,6 +8173,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7941,6 +8277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -8415,6 +8752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -8430,6 +8768,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8720,6 +9062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -9025,6 +9368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -9171,6 +9515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -9416,6 +9761,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2811252049984563606, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
+      propertyPath: uniqueID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5032806494592378329, guid: 3894e7acd8b6563468ad048027b5dae4, type: 3}
       propertyPath: m_Speed
       value: 5
@@ -9502,6 +9851,10 @@ PrefabInstance:
     - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575120677596183683, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: uniqueID
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9668,6 +10021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeVida
   maxHealth: 100
+  currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -9772,5 +10126,7 @@ SceneRoots:
   - {fileID: 1617783070}
   - {fileID: 2004773485}
   - {fileID: 2124255719}
+  - {fileID: 917978911}
+  - {fileID: 864829594}
   - {fileID: 919287733}
   - {fileID: 305790807}

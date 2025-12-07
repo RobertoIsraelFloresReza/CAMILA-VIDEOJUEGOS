@@ -41,6 +41,7 @@ public class CodigoPausa : MonoBehaviour
 
     public void IrAlMenu(string NombreMenu)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(NombreMenu);
 
     }
@@ -48,5 +49,29 @@ public class CodigoPausa : MonoBehaviour
     {
         Application.Quit();
     }
+    public void GuardarJuego()
+    {
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.SaveGameData();
+        }
+        
+        Resumir(); 
+    }
+
+    public void CargarJuego()
+    {
+        if (SaveManager.Instance != null && SaveManager.Instance.HasSavedGame())
+        {
+            Time.timeScale = 1; 
+
+            SaveManager.Instance.LoadGameData();
+        }
+        else
+        {
+            Debug.LogWarning("No hay partida guardada para cargar.");
+        }
+    }
+    
 
 }

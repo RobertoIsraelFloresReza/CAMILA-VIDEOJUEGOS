@@ -67,7 +67,6 @@ public class FlashLigthController : MonoBehaviour
         }
         else
         {
-            // Si no hay batería, asegurarse de que esté apagada
             TurnOff();
         }
     }
