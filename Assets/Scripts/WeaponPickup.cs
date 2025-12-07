@@ -20,7 +20,12 @@ public class WeaponPickup : MonoBehaviour, IInteractable
             Debug.Log($"[PICKUP] Arma '{weaponItemID}' notificada al GameManager.");
         }
         
-        // 2. Oculta el modelo visual del arma en el mundo.
+        ItemSwitcher switcher = FindObjectOfType<ItemSwitcher>();
+        if (switcher != null)
+        {
+            switcher.ForceSelectWeapon();
+        }
+        
         if (weaponModelVisual != null)
         {
             weaponModelVisual.gameObject.SetActive(false);

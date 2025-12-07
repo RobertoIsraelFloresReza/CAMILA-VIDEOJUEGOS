@@ -35,5 +35,17 @@ public class HouseKeyController : MonoBehaviour, IInteractable
         {
             keyModel.gameObject.SetActive(false);
         }
+        
+        if (GameManager.Instance != null)
+        {
+            if (keyID == "Key0")
+            {
+                GameManager.Instance.SetCurrentObjective("KEY_DOOR_A_ACQUIRED");
+            }
+            else
+            {
+                GameManager.Instance.SetCurrentObjective("NEW_DOOR_KEY");
+            }
+        }
     }
 }

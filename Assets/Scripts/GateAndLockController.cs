@@ -24,7 +24,6 @@ public class GateAndLockController : MonoBehaviour, IInteractable
     public GlobalEvents requiredKeyEvent;
     
     [Header("Persistencia")]
-    [Tooltip("ID único para esta puerta. Ej: 'Gate_Red_01'")]
     public string doorUniqueID;
     
     private void OnEnable()
@@ -46,6 +45,10 @@ public class GateAndLockController : MonoBehaviour, IInteractable
         if (keyUsed && !isOpening)
         {
             OpenDoors();
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SetCurrentObjective("GATE_DOOR_OPEN");
+            }
         }
     }
     
@@ -53,19 +56,18 @@ public class GateAndLockController : MonoBehaviour, IInteractable
     {
         if (GameManager.Instance != null && GameManager.Instance.GetObjectState(doorUniqueID))
         {
-            Debug.Log($"[PERSISTENCIA] Puerta '{doorUniqueID}' ya abierta. Restaurando estado...");
+          //  Debug.Log($"[PERSISTENCIA] Puerta '{doorUniqueID}' ya abierta. Restaurando estado...");
 
             InitializeOpenState();
         }
         else
         {
-            // Inicializamos las rotaciones iniciales si la puerta está cerrada
             _startLeftRotation = leftDoor.transform.localRotation;
             _startRightRotation = rightDoor.transform.localRotation;
         }
     }
     
-    private void InitializeOpenState() // <--- NUEVA FUNCIÓN AUXILIAR
+    private void InitializeOpenState() 
     {
         Quaternion tempStartLeft = leftDoor.transform.localRotation; 
         Quaternion tempEndLeft = tempStartLeft * Quaternion.Euler(0, openAngle, 0);

@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI; // ¡IMPORTANTE! Necesario para usar el componente Slider
+using UnityEngine.UI; 
 
 public class SistemaDeVida : MonoBehaviour
 {
-    // Variables para la vida
     public float maxHealth = 100f;
-    private float currentHealth;
+    public float currentHealth;
     
     public UnityEvent OnDeath;
 
@@ -42,14 +41,26 @@ public class SistemaDeVida : MonoBehaviour
             Die();
         }
     }
+    
+    private bool isDead = false;
 
     private void Die()
-    {
+    {if (isDead) return; 
+        isDead = true;
         Debug.Log($"{gameObject.name} ha muerto.");
         
-        if (finalZoneManager != null && CompareTag("Enemy"))
+        FinalZoneManager fzm = FindObjectOfType<FinalZoneManager>();
+        if (fzm != null)
         {
-            finalZoneManager.EnemyWasDefeated();
+            PersistentID pid = GetComponent<PersistentID>();
+            if (pid != null)
+            {
+                fzm.RegisterDefeat(pid.GetID()); 
+            }
+            else
+            {
+                fzm.EnemyWasDefeated(); 
+            }
         }
         
         OnDeath.Invoke(); 
@@ -57,6 +68,7 @@ public class SistemaDeVida : MonoBehaviour
         if (!CompareTag("Player"))
         {
             EnemiesIA iaScript = GetComponent<EnemiesIA>();
+            Debug.Log($"[VIDA DEBUG] Enemigo con ID {GetComponent<PersistentID>()?.GetID()} está muriendo UNA SOLA VEZ.");
              
             if (iaScript != null)
             {

@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Importante para el nuevo Input System
+using UnityEngine.InputSystem; 
 
 public class ItemSwitcher : MonoBehaviour
 {
-    // Arrastraremos nuestros items (escopeta, linterna) aquí
     public GameObject[] items;
 
     private int currentItemIndex = 0;
@@ -12,14 +11,13 @@ public class ItemSwitcher : MonoBehaviour
     
     
     [Header("Configuración de Items")]
-    public int shotgunItemIndex = 0;
+    public int shotgunItemIndex = 1;
     public string shotgunItemID = "Escopeta";
     
     bool hasWeapon = false;
 
     void Start()
     {
-        // Al empezar, nos aseguramos de que solo el primer item esté activo
         SelectItem(0,0);
         lastValidIndex = 0;
     }
@@ -27,19 +25,15 @@ public class ItemSwitcher : MonoBehaviour
     void Update()
     {
         hasWeapon=GameManager.Instance != null && GameManager.Instance.HasItem("Escopeta");
-        // Revisamos si hay un mouse conectado
         if (Mouse.current == null) return;
 
-        // Leemos el valor "Y" de la rueda del ratón
         float scrollInput = Mouse.current.scroll.ReadValue().y;
 
         int previousItemIndex = currentItemIndex;
 
         if (scrollInput > 0f && hasWeapon) // Rueda hacia arriba
         {
-            // Pasamos al item anterior
             currentItemIndex--;
-            // Si llegamos al primero (índice -1), damos la vuelta al final de la lista
             if (currentItemIndex < 0)
             {
                 currentItemIndex = items.Length - 1;
@@ -47,47 +41,67 @@ public class ItemSwitcher : MonoBehaviour
         }
         else if (scrollInput < 0f && hasWeapon) // Rueda hacia abajo
         {
-            // Pasamos al siguiente item
             currentItemIndex++;
-            // Si nos pasamos del último, volvemos al primero (índice 0)
             if (currentItemIndex >= items.Length)
             {
                 currentItemIndex = 0;
             }
         }
 
-        // Si el índice cambió (es decir, si movimos la rueda),
-        // llamamos a nuestra función para actualizar el item.
         if (previousItemIndex != currentItemIndex)
         {
-           // Debug.Log($"INTENTO DE CAMBIO: old={previousItemIndex}, new={currentItemIndex}.");
+         //   Debug.Log($"[SWITCHER DEBUG] Scroll detectado. Llamando SelectItem: new={currentItemIndex}, old={previousItemIndex}.");
             SelectItem(currentItemIndex, previousItemIndex);
-        }
-        else
-        {
-            SelectItem(currentItemIndex, currentItemIndex); 
         }
     }
 
-    // Esta función activa un item y desactiva todos los demás
     void SelectItem(int newIndex, int oldIndex)
     {
+        bool currentHasWeapon = GameManager.Instance != null && GameManager.Instance.HasItem("Escopeta");
         int finalIndex = newIndex;
-        
+     //   Debug.Log($"[SELECT DEBUG] -> INICIO: newIndex={newIndex}, oldIndex={oldIndex}, hasWeapon={currentHasWeapon}");
+    
         if (newIndex == shotgunItemIndex && !hasWeapon)
         {
-         //   Debug.Log("!!! BLOQUEO ACTIVADO: Volviendo a índice " + oldIndex + ".");
-            // Forzamos el índice a ser el anterior (la linterna o lo que estuviera antes)
-            finalIndex = oldIndex; 
+            finalIndex = oldIndex;
+          //  Debug.Log($"[SELECT DEBUG] Bloqueo de Escopeta activado. finalIndex forzado a {finalIndex} (oldIndex).");
         }
-            currentItemIndex = newIndex; // Si es válido, confirmamos el nuevo índice.
+        
+        
+    
+        // 2. Aplicar el índice final
+        currentItemIndex = finalIndex; 
 
-           // Debug.Log($"[SELECT] Índice final activo: {finalIndex}. currentItemIndex ahora es {currentItemIndex}.");
-        // Activación/Desactivación
+        AmmoDisplay display = FindObjectOfType<AmmoDisplay>();
+        if (display != null)
+        {
+            bool shouldBeActive = currentHasWeapon && finalIndex == shotgunItemIndex;
+            display.SetActive(hasWeapon && finalIndex == shotgunItemIndex); 
+         //   Debug.Log($"[SELECT DEBUG] Estado UI Ammo: {shouldBeActive} (hasWeapon={currentHasWeapon}, finalIndex={finalIndex}, ShotgunIndex={shotgunItemIndex}).");
+        }
+
         for (int i = 0; i < items.Length; i++)
         {
-            // Solo activamos el item que coincide con el índice final
             items[i].SetActive(i == finalIndex);
+        }
+      //  Debug.Log($"[SELECT DEBUG] -> FIN: Item {finalIndex} activado. currentItemIndex ahora es {currentItemIndex}.");
+    }
+    
+    public void ForceSelectWeapon()
+    {
+        bool currentHasWeapon = GameManager.Instance != null && GameManager.Instance.HasItem(shotgunItemID);
+        
+     //   Debug.Log("[FORCE DEBUG] -> INICIO DE FUERZA DE SELECCIÓN.");
+        if (GameManager.Instance != null && GameManager.Instance.HasItem(shotgunItemID))
+        {
+            int previousIndex = currentItemIndex;
+        
+            currentItemIndex = shotgunItemIndex;
+        //    Debug.Log($"[FORCE DEBUG] Arma adquirida. Forzando índice: old={previousIndex} a new={shotgunItemIndex}.");
+            SelectItem(shotgunItemIndex, previousIndex);
+        }else
+        {
+            Debug.LogWarning("[FORCE DEBUG] Llamada a ForceSelectWeapon pero hasWeapon es FALSE.");
         }
     }
 }

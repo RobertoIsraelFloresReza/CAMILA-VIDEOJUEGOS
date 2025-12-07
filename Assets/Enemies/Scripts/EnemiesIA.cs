@@ -23,22 +23,23 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     public Transform[] waypoints;
     
     [Header("Capas de Detección")]
-    [Tooltip("Capas que el Raycast debe IGNORAR (ej. la capa del propio enemigo o de elementos que se quieren atravesar).")]
     public LayerMask layersToIgnore;
+    
     [Header("Detección")]
-    [Tooltip("La máscara que contiene SÓLO la capa del jugador (ej. 'Player').")]
     public LayerMask playerLayer;
+    
+    [Header("Audio")]
+    public AudioSource audioSource; 
+    public AudioClip detectionSound;
 
     IEnumerator Start()
     {
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (animator == null) animator = GetComponentInChildren<Animator>();
-
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         
-        // Inicializamos animaciones
         RandomizeIdle();
 
-        // Iniciamos la máquina de estados
         ChangeState(new PatrollingState(this));
 
         while (true)
@@ -75,6 +76,14 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
             yield return new WaitForSeconds(0.2f);
         }
     }
+    
+    public void PlayDetectionSound()
+    {
+        if (audioSource != null && detectionSound != null)
+        {
+            audioSource.PlayOneShot(detectionSound);
+        }
+    }
 
     void Update()
     {
@@ -90,7 +99,6 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     }
 
 
-    // --- FUNCIÓN PARA RECIBIR DAÑO/MORIR ---
     public void Morir()
     {
         if (CurrentState is DeathState) return;
@@ -99,7 +107,6 @@ public class EnemiesIA : MonoBehaviour, IStateMachine
     }
 
 
-    // --- FUNCIONES AUXILIARES PARA ANIMATOR ---
     public void SetWalking(bool isWalking)
     {
         if (animator != null) animator.SetBool("isWalking", isWalking);
@@ -186,6 +193,7 @@ public struct PatrollingState : IState
 
         if (StateMachine.isPlayerSighted)
         {
+            StateMachine.PlayDetectionSound();
             StateMachine.ChangeState(new ChasingState(StateMachine));
         }
     }
@@ -219,6 +227,7 @@ public struct PatrollingState : IState
         StateMachine.RandomizeWalk();
     }
 }
+
 
 // ESTADO: PERSECUCIÓN
 public struct ChasingState : IState

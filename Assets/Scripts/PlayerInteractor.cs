@@ -17,7 +17,6 @@ public class PlayerInteractor : MonoBehaviour
      private Camera playerCamera; 
      
      [Header("Configuración de Interacción")]
-     // ¡NUEVO CAMPO! Arrastra el objeto fijo aquí.
      [SerializeField] private Transform raycastOriginFixed;
      void Start()
      {
@@ -26,17 +25,14 @@ public class PlayerInteractor : MonoBehaviour
 
          if (promptObject != null)
          {
-             // Asigna la referencia del componente
              interactionText = promptObject.GetComponent<TextMeshProUGUI>();
 
-             // Usamos el propio GameObject para activar/desactivar
               promptObject.SetActive(false); 
          }
       }
  
      void LateUpdate()
      {
-         // Añadir una verificación de seguridad
          if (playerCamera == null || promptObject == null || interactionText == null) 
          return;
 
@@ -63,12 +59,10 @@ public class PlayerInteractor : MonoBehaviour
                 // Debug.Log("¡Objeto interactuable encontrado! Activando UI.");
                  hitInteractable = true;
                 
-                 // 1. Usamos la variable de CLASE
                  if (!promptObject.activeSelf)
                  {
                      promptObject.SetActive(true);
                     
-                     // Aseguramos que el texto muestra el nombre del objeto golpeado (si existe)
                      string objectName = hit.collider.name;
                      if (hit.collider.transform.parent != null)
                      {
@@ -78,7 +72,6 @@ public class PlayerInteractor : MonoBehaviour
                      interactionText.text = $"Presiona [ E ] para interactuar con {objectName}";
                  }
 
-                 // 2. Detectar la interacción
                  if (Input.GetKeyDown(KeyCode.E))
                  {
                      interactable.Interact();
@@ -87,7 +80,6 @@ public class PlayerInteractor : MonoBehaviour
              }
          }
         
-         // 3. Ocultar el mensaje si no hay interacción
          if (!hitInteractable && promptObject.activeSelf)
          {
              promptObject.SetActive(false);

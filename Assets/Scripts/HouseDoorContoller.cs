@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class HouseDoorContoller : MonoBehaviour, IInteractable
 {
-// ... (Variables de Transform, Angulo, Duration)
     [SerializeField] private Transform houseDoor;
     public float openAngle = -90f; 
     public float openDuration = 1.5f; 
     private bool keyUsed = false;
     
-    private bool keyIsAvailable = false; // El nuevo switch de estado
+    private bool keyIsAvailable = false; 
     private bool isOpening = false;
     private float startTime;
     private Collider doorCollider;
@@ -73,6 +72,14 @@ public class HouseDoorContoller : MonoBehaviour, IInteractable
         else if (!keyIsAvailable)
         {
             Debug.Log($"La puerta requiere la llave {requiredItemID}.");
+                GameManager.Instance.SetCurrentObjective("NEW_QUEST");
+        }
+        if (GameManager.Instance != null)
+        {
+            if (doorUniqueID == "Door0")
+            {
+                GameManager.Instance.SetCurrentObjective("NEW_QUEST");
+            }
         }
     }
     

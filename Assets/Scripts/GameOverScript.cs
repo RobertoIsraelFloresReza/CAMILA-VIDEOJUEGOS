@@ -4,11 +4,9 @@ using UnityEngine.SceneManagement;
 public class GameOverScript : MonoBehaviour
 {
     [Header("Componentes UI")]
-        [Tooltip("Arrastra aquí el panel principal de Game Over (el que debe estar desactivado al inicio).")]
         public GameObject gameOverPanel;
     
         [Header("Opciones de Reinicio")]
-        [Tooltip("El nombre de la escena a recargar. Si está vacío, recarga la actual.")]
         public string sceneToLoad = "";
     
         void Start()

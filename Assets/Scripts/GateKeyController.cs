@@ -16,10 +16,14 @@ public class GateKeyController : MonoBehaviour, IInteractable
     {
         EventManager.Invoke(keyOpensEvent); 
         
-        // Desaparece la llave
         if (keyModel != null)
         {
             keyModel.gameObject.SetActive(false);
+        }
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetCurrentObjective("LOCK_KEY_FOUND");
         }
     }
 }
