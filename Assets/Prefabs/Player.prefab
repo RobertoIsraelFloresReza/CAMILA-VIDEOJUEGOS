@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1665871444175486836}
+  - {fileID: 947385217173289535}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &730699462653159380
@@ -76,6 +76,7 @@ MonoBehaviour:
   invertY: 0
   minPitch: -80
   maxPitch: 80
+  cameraPivotTransform: {fileID: 947385217173289535}
   walkSpeed: 5
   runSpeedMultiplier: 1.5
   crouchSpeedMultiplier: 0.5
@@ -83,6 +84,38 @@ MonoBehaviour:
   gravity: -20
   crouchHeight: 1
   crouchTransitionSpeed: 10
+--- !u!1 &2756655364469963981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947385217173289535}
+  m_Layer: 0
+  m_Name: CameraPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &947385217173289535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756655364469963981}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -16.80011, y: -1.8377914, z: 12.937195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1665871444175486836}
+  m_Father: {fileID: 2079970050057910631}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6571839258270306669
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +165,8 @@ MonoBehaviour:
   items:
   - {fileID: 2546063223614901057}
   - {fileID: 4271743126771075919}
+  shotgunItemIndex: 1
+  shotgunItemID: Escopeta
 --- !u!1 &6931766778732131069
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,13 +195,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931766778732131069}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00003644255, y: -0.0037508574, z: 0.009715265, w: 0.9999458}
-  m_LocalPosition: {x: 2.27317, y: -0.23966, z: -2.92539}
+  m_LocalRotation: {x: 0.009715265, y: 0.9999458, z: -0.00003644255, w: 0.0037508574}
+  m_LocalPosition: {x: -19.073273, y: 1.5981293, z: 15.862579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6108855092340913806}
-  m_Father: {fileID: 2079970050057910631}
+  m_Father: {fileID: 947385217173289535}
   m_LocalEulerAnglesHint: {x: 0.008, y: -0.43, z: 1.113}
 --- !u!20 &7162029044667014323
 Camera:
@@ -620,6 +655,13 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   shootSound: {fileID: 2220450900877884052}
   reloadSound: {fileID: 4499500779803424375}
+  weaponItemID: Escopeta
+  shotgunDamage: 5000
+  recoilX: -5
+  recoilDuration: 0.1
+  muzzleFlashLight: {fileID: 0}
+  flashDuration: 0.05
+  hitParticles: {fileID: 0}
 --- !u!82 &2220450900877884052
 AudioSource:
   m_ObjectHideFlags: 0

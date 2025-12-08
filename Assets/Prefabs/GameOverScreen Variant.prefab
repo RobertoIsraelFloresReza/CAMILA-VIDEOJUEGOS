@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1641886959161086480, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45
+      value: 137
       objectReference: {fileID: 0}
     - target: {fileID: 1789317754118868714, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_Color.a
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3016725172163914934, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_text
-      value: "Moriste\nIntentt\xE1lo de nuevo"
+      value: "Moriste\nInt\xE9ntalo de nuevo"
       objectReference: {fileID: 0}
     - target: {fileID: 3016725172163914934, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_fontAsset
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6548861415946323892, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 242
       objectReference: {fileID: 0}
     - target: {fileID: 8011910132236332075, guid: 75edde5339643d34dade3ad7324638a9, type: 3}
       propertyPath: m_Name

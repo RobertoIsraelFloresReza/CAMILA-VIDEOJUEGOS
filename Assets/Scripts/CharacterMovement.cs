@@ -11,6 +11,10 @@ public class CharacterMovement : MonoBehaviour
     public bool invertY = false; 
     public float minPitch = -80f; 
     public float maxPitch = 80f;  
+    
+    [Header("1. Configuración de Cámara")]
+    [Tooltip("Arrastra aquí tu objeto Pivot/Container de la cámara (el padre de Main Camera)")]
+    public Transform cameraPivotTransform;
 
     [Header("2. Configuración de Movimiento")]
     public float walkSpeed = 5f;
@@ -43,12 +47,26 @@ public class CharacterMovement : MonoBehaviour
 
         originalHeight = controller.height;
         
-        if (cameraTransform != null)
+        if (cameraPivotTransform == null)
         {
-            originalCameraCenter = cameraTransform.localPosition;
-            cameraPitch = cameraTransform.localEulerAngles.x;
+            if (transform.childCount > 0)
+            {
+                cameraPivotTransform = transform.GetChild(0);
+            }
+        }
+    
+        if (cameraPivotTransform != null)
+        {
+            cameraTransform = cameraPivotTransform.GetComponentInChildren<Camera>().transform;
+
+            originalCameraCenter = cameraPivotTransform.localPosition; 
+            cameraPivotTransform.localPosition = originalCameraCenter; 
+
+            cameraPitch = 0f; 
+            
+            cameraPivotTransform.localEulerAngles = Vector3.zero;
         
-            cameraRecoilScript = cameraTransform.GetComponent<CmeraRecoil>();
+            cameraRecoilScript = cameraPivotTransform.GetComponent<CmeraRecoil>();
         }
     }
 
@@ -64,25 +82,23 @@ public class CharacterMovement : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
 
         transform.Rotate(Vector3.up * mouseX * mouseSensitivity);
-
-        if (cameraTransform != null)
+    
+        if (cameraRecoilScript != null)
         {
-            float currentPitch=0; 
+            transform.Rotate(Vector3.up * cameraRecoilScript.currentRecoil.y); 
+        }
+    
+        if (cameraPivotTransform != null) 
+        {
         
-            float rotationAmount = (mouseY * mouseSensitivity) * (invertY ? -1 : 1);
-            cameraPitch -= rotationAmount;
-            
-            cameraPitch = Mathf.Clamp(cameraPitch, minPitch, maxPitch);
-        
-            Vector3 finalRotation = new Vector3(cameraPitch, 0f, 0f);;
+            Vector3 finalRotation = new Vector3(cameraPitch, 0f, 0f);
 
             if (cameraRecoilScript != null)
             {
                 finalRotation.x += cameraRecoilScript.currentRecoil.x;
-                finalRotation.y += cameraRecoilScript.currentRecoil.y;
             }
 
-            cameraTransform.localEulerAngles = finalRotation;
+            cameraPivotTransform.localEulerAngles = finalRotation; 
         }
     }
 
@@ -106,7 +122,15 @@ public class CharacterMovement : MonoBehaviour
             currentSpeed *= runSpeedMultiplier;
         }
 
-        Vector3 moveDirection = (transform.right * horizontal + transform.forward * vertical).normalized;
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+        
+        Vector3 moveDirection = (right * horizontal + forward * vertical).normalized;
 
         if (controller.isGrounded)
         {
@@ -134,7 +158,6 @@ public class CharacterMovement : MonoBehaviour
     
     void HandleCrouchHeight(bool isCrouching)
     {
-        // Determinar altura objetivo
         float targetHeight = isCrouching ? crouchHeight : originalHeight;
         float currentHeight = controller.height;
 
@@ -144,20 +167,22 @@ public class CharacterMovement : MonoBehaviour
         Vector3 targetCenter = new Vector3(0, currentHeight / 2f, 0); 
         controller.center = targetCenter; 
 
-        // 3. AJUSTAR LA POSICIÓN DE LA CÁMARA
-        if (cameraTransform != null)
+        if (cameraPivotTransform != null)
         {
-            float cameraYOffset = originalCameraCenter.y; 
+            float heightDifference = originalHeight - controller.height;
+            float targetCamY = originalCameraCenter.y - heightDifference; 
 
-            float heightDifference = originalHeight - currentHeight;
-        
-            Vector3 targetCamPos = new Vector3(
-                originalCameraCenter.x, 
-                cameraYOffset - heightDifference, // <- La clave del ajuste
-                originalCameraCenter.z
+            Vector3 targetPivotPos = new Vector3(
+                originalCameraCenter.x,
+                targetCamY, 
+                originalCameraCenter.z  
             );
 
-            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, targetCamPos, Time.deltaTime * crouchTransitionSpeed);
+            cameraPivotTransform.localPosition = Vector3.Lerp(
+                cameraPivotTransform.localPosition, 
+                targetPivotPos, 
+                Time.deltaTime * crouchTransitionSpeed
+            );
         }
     }
     }

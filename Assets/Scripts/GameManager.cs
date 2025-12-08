@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         {"START_04", "Encuentra la llave en la cima de la montaña"},
         {"RIP_&_TEAR","Acaba con todos los enemigos"},
         {"KEY_DOOR_A_ACQUIRED", "Regresa a la cabaña y entra"}, // YA
-        {"LOCK_KEY_FOUND", "Encuentra el portón que abre esta llave y explora el área."}, // YA
+        {"LOCK_KEY_FOUND", "Explora la cerca y encuentra el candado correcto"}, // YA
         {"GATE_DOOR_OPEN", "Busca la siguiente llave de la cabaña en la nueva Zona"}, // YA
         {"NEW_DOOR_KEY", "Regresa a la cabaña y encuentra la puerta que abre la llave"}, // YA
         {"NEW_QUEST","Necesitas más llaves para explorar la cabaña, explora otras zonas"}, // YA
