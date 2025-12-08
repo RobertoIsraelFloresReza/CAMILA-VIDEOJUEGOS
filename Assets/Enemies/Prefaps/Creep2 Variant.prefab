@@ -132,7 +132,7 @@ MonoBehaviour:
   animator: {fileID: 7074394850045429551}
   healthController: {fileID: 0}
   player: {fileID: 0}
-  detectionRadius: 10
+  detectionRadius: 20
   isPlayerSighted: 0
   distanciaAtaque: 2.5
   waypoints:
@@ -207,7 +207,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 120
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
