@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1386364289}
+    - target: {fileID: 6752756077309635813, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7472714829504285620, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1637.9731
@@ -289,6 +293,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1362812854}
     m_Modifications:
+    - target: {fileID: 1307146950079730657, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4717044037595624045, guid: dfd3a35714a291b4a81eb62e5e4004b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.11487
@@ -1782,6 +1790,10 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1243433166}
+    - target: {fileID: 6752756077309635813, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7472714829504285620, guid: fca3851205ee01648939ce6d4cec0895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1679.9019
